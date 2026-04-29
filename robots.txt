@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Yeti
+Allow: /
+
+Sitemap: https://univerlabmedia2-byte.github.io/dcd-landing/sitemap.xml

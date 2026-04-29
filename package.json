@@ -1,0 +1,12 @@
+{
+  "name": "dcd-landing",
+  "version": "1.0.0",
+  "description": "몽땅마케팅 랜딩페이지 + AI 자동 칼럼 시스템",
+  "private": true,
+  "scripts": {
+    "generate-column": "node scripts/generate-column.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.1"
+  }
+}

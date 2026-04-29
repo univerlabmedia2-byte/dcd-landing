@@ -1,0 +1,334 @@
+/* ============================================
+   Subpage Common Styles
+   서브페이지 공통 스타일 (자영업자/전문직/칼럼 등)
+   ============================================ */
+
+/* --- Subpage Hero --- */
+.subpage-hero {
+  padding: 7rem 1.5rem 5rem;
+  background: linear-gradient(160deg, #E8F4F5 0%, #F7FAFB 60%, #FFF4EE 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.subpage-hero::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(31, 163, 164, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.subpage-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.subpage-hero .hero-badge {
+  display: inline-block;
+  background: rgba(31, 163, 164, 0.15);
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1.5rem;
+}
+
+.subpage-hero h1 {
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.2rem;
+}
+
+.subpage-hero h1 span {
+  color: var(--color-accent);
+}
+
+.subpage-hero p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.subpage-hero .btn-primary {
+  margin-top: 0.5rem;
+}
+
+/* --- Subpage Section Common --- */
+.subpage-section {
+  padding: 5rem 1.5rem;
+}
+
+.subpage-section.bg-cream {
+  background: var(--color-bg-cream);
+}
+
+.subpage-section.bg-dark {
+  background: linear-gradient(160deg, var(--color-bg-warm-dark) 0%, #1f4748 100%);
+  color: var(--color-text-on-dark);
+}
+
+.subpage-section.bg-dark .section-title {
+  color: var(--color-text-on-dark);
+}
+
+.subpage-section.bg-dark .section-subtitle {
+  color: rgba(232, 244, 245, 0.7);
+}
+
+/* --- Feature Grid --- */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transition: transform var(--transition);
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+.feature-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+}
+
+.feature-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--color-primary-lighter);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  font-size: 1.6rem;
+}
+
+.feature-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.6rem;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* --- Pricing Card --- */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  transition: all var(--transition);
+}
+
+.pricing-card.featured {
+  border-color: var(--color-primary);
+  border-width: 2px;
+  transform: scale(1.03);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.pricing-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.3rem 1rem;
+  border-radius: var(--radius-full);
+}
+
+.pricing-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.pricing-price {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 0.3rem;
+}
+
+.pricing-price span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.pricing-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.pricing-features {
+  text-align: left;
+  margin: 1.5rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.pricing-features li {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  padding: 0.4rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.pricing-features li::before {
+  content: '✓';
+  color: var(--color-success);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* --- Compliance Box (전문직용) --- */
+.compliance-box {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--color-bg-white);
+  border-left: 4px solid var(--color-primary);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.compliance-box h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.compliance-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.compliance-box li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.compliance-box li::before {
+  content: '⚖️';
+  position: absolute;
+  left: 0;
+}
+
+/* --- Subpage CTA Block --- */
+.subpage-cta-block {
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  color: #fff;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.subpage-cta-block h3 {
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 800;
+  margin-bottom: 0.8rem;
+}
+
+.subpage-cta-block p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.92;
+}
+
+.subpage-cta-block .btn-primary {
+  background: #fff;
+  color: var(--color-primary);
+}
+
+.subpage-cta-block .btn-primary:hover {
+  background: var(--color-bg-cream);
+  color: var(--color-primary-dark);
+}
+
+@media (max-width: 768px) {
+  .subpage-hero {
+    padding: 4rem 1.25rem 3rem;
+  }
+
+  .subpage-section {
+    padding: 3rem 1.25rem;
+  }
+
+  .pricing-card.featured {
+    transform: none;
+  }
+
+  .subpage-cta-block {
+    padding: 2rem 1.25rem;
+  }
+}

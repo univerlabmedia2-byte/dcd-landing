@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta name="keywords" content="{{KEYWORDS}}">
+  <meta name="author" content="몽땅마케팅">
+  <meta property="og:title" content="{{TITLE}} | 몽땅마케팅 칼럼">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{CANONICAL_URL}}">
+  <meta property="article:published_time" content="{{PUBLISHED_ISO}}">
+  <meta property="article:section" content="{{CATEGORY_LABEL}}">
+  <link rel="canonical" href="{{CANONICAL_URL}}">
+  <title>{{TITLE}} | 몽땅마케팅</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/subpage.css">
+  <link rel="stylesheet" href="../css/column.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{TITLE}}",
+    "description": "{{DESCRIPTION}}",
+    "datePublished": "{{PUBLISHED_ISO}}",
+    "dateModified": "{{PUBLISHED_ISO}}",
+    "author": {
+      "@type": "Organization",
+      "name": "몽땅마케팅"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "몽땅마케팅",
+      "url": "https://univerlabmedia2-byte.github.io/dcd-landing/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{CANONICAL_URL}}"
+    },
+    "keywords": "{{KEYWORDS}}",
+    "articleSection": "{{CATEGORY_LABEL}}"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Global Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="../index.html" class="navbar-logo">
+        <span class="logo-mark">M</span>
+        <span class="logo-text">몽땅마케팅</span>
+      </a>
+      <nav class="navbar-menu" id="navbarMenu">
+        <a href="../index.html" class="navbar-link">홈</a>
+        <a href="../self-employed.html" class="navbar-link">자영업자</a>
+        <a href="../professionals.html" class="navbar-link">전문직</a>
+        <a href="index.html" class="navbar-link active">칼럼</a>
+        <a href="../index.html#contact" class="navbar-link">문의하기</a>
+      </nav>
+      <a href="../index.html#contact" class="navbar-cta">무료 상담</a>
+      <button class="navbar-toggle" id="navbarToggle" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <article class="column-article">
+    <header class="column-article-header">
+      <span class="column-category">{{CATEGORY_LABEL}}</span>
+      <h1>{{TITLE}}</h1>
+      <div class="column-meta">
+        <span>📅 {{PUBLISHED_DATE}}</span>
+        <span>·</span>
+        <span>몽땅마케팅</span>
+      </div>
+    </header>
+
+    <div class="column-article-content">
+      {{CONTENT_HTML}}
+    </div>
+
+    <div class="column-cta-inline">
+      <h4>우리 가게에 맞춤 마케팅이 필요하시다면?</h4>
+      <p>몽땅마케팅 전문 매니저가 무료 상담해드립니다</p>
+      <a href="../index.html#contact" class="btn-primary">무료 상담 신청</a>
+    </div>
+
+    <footer class="column-article-footer">
+      <a href="index.html" class="btn-secondary">← 칼럼 목록으로</a>
+    </footer>
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="../index.html">홈</a>
+      <a href="../self-employed.html">자영업자</a>
+      <a href="../professionals.html">전문직</a>
+      <a href="index.html">칼럼</a>
+    </div>
+    <p>주식회사 몽땅마케팅 ㅣ 대표: 홍길동 ㅣ 사업자등록번호: 123-45-67890</p>
+    <p style="margin-top: 0.5rem;">© 2026 몽땅마케팅. All rights reserved.</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

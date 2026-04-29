@@ -1,0 +1,42 @@
+name: Auto Generate Column
+
+on:
+  schedule:
+    # 한국시간(KST) 월·수·금 오전 7시 = UTC 22:00 (전날)
+    - cron: '0 22 * * 0,2,4'
+  workflow_dispatch:        # GitHub Actions 페이지에서 수동 실행 가능
+
+permissions:
+  contents: write           # 자동 commit/push 권한
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate column with Claude
+        run: node scripts/generate-column.js
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Commit and push
+        run: |
+          git config user.name "Auto Column Bot"
+          git config user.email "bot@dcdcompany.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "변경사항 없음 — 커밋 건너뜀"
+          else
+            git commit -m "feat(column): AI 자동 칼럼 발행 [$(date -u +'%Y-%m-%d')]"
+            git push
+          fi

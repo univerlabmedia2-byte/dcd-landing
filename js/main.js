@@ -3,6 +3,7 @@
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initNavbar();
   initScrollAnimations();
   initFloatingCTA();
   initCountUp();
@@ -11,6 +12,39 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initModal();
 });
+
+/* --- Global Navigation --- */
+function initNavbar() {
+  const navbar = document.getElementById('navbar');
+  const toggle = document.getElementById('navbarToggle');
+  const menu = document.getElementById('navbarMenu');
+
+  if (!navbar) return;
+
+  // 스크롤 시 배경 변화
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // 모바일 햄버거 토글
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      menu.classList.toggle('active');
+    });
+
+    menu.querySelectorAll('.navbar-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        toggle.classList.remove('active');
+        menu.classList.remove('active');
+      });
+    });
+  }
+}
 
 /* --- Scroll Fade-in Animations --- */
 function initScrollAnimations() {
