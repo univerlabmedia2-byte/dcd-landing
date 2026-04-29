@@ -359,14 +359,58 @@ function showValidationError(message) {
   }
 }
 
-// 폼 데이터 처리 — 추후 백엔드 연결 시 이 함수만 수정
-function submitForm(data) {
-  console.log('상담 신청 데이터:', data);
-  showModal();
+// 폼 데이터 처리 — contact@dcdcompany.com으로 이메일 발송
+const CONTACT_EMAIL = 'contact@dcdcompany.com';
 
-  // 폼 초기화
-  const form = document.getElementById('contactForm');
-  if (form) form.reset();
+const BUSINESS_LABELS = {
+  restaurant: '음식점',
+  cafe: '카페',
+  beauty: '미용실/네일샵',
+  hospital: '병원/의원',
+  academy: '학원',
+  fitness: '피트니스/요가',
+  retail: '소매/유통',
+  other: '기타'
+};
+
+function submitForm(data) {
+  const businessLabel = BUSINESS_LABELS[data.business] || data.business;
+
+  const subject = `[몽땅마케팅 상담 신청] ${data.name} 사장님 / ${businessLabel}`;
+  const body = `안녕하세요, 몽땅마케팅 무료 상담을 신청합니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 신청 정보
+━━━━━━━━━━━━━━━━━━━━━━
+
+▸ 대표자명: ${data.name}
+▸ 연락처: ${data.phone}
+▸ 업종: ${businessLabel}
+▸ 지역: ${data.region || '(미입력)'}
+▸ 업체명: ${data.company || '(미입력)'}
+
+▸ 개인정보 수집 동의: ${data.consent ? '동의' : '미동의'}
+▸ 신청 일시: ${new Date().toLocaleString('ko-KR')}
+
+━━━━━━━━━━━━━━━━━━━━━━
+빠른 회신 부탁드립니다.
+감사합니다.
+`;
+
+  const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  // 사용자의 메일 클라이언트로 이동
+  window.location.href = mailtoUrl;
+
+  // 콘솔에도 백업 데이터 로그 (디버깅용)
+  console.log('상담 신청 데이터:', data);
+
+  // 약간의 딜레이 후 성공 모달 표시
+  setTimeout(() => {
+    showModal();
+    const form = document.getElementById('contactForm');
+    if (form) form.reset();
+  }, 600);
 }
 
 /* --- Modal --- */
