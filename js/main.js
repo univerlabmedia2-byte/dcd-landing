@@ -349,65 +349,50 @@ function handleFormSubmit(e) {
   e.preventDefault();
 
   const form = e.target;
-  const name = form.querySelector('#name').value.trim();
-  const phone = form.querySelector('#phone').value.trim();
-  const company = form.querySelector('#company').value.trim();
-  const business = form.querySelector('#business').value;
-  const region = form.querySelector('#region').value.trim();
-  const budget = form.querySelector('#budget').value;
-  const concern = form.querySelector('#concern').value;
+  const get = (sel) => {
+    const el = form.querySelector(sel);
+    return el ? (el.type === 'checkbox' ? el.checked : el.value.trim ? el.value.trim() : el.value) : '';
+  };
+
+  const name = get('#name');
+  const phone = get('#phone');
+  const company = get('#company');
+  const business = get('#business');
+  const region = get('#region');
+  const years = get('#years');           // 운영 기간 (서브페이지)
+  const staff = get('#staff');           // 직원 수 (서브페이지)
+  const current = get('#current');       // 현재 마케팅 진행 여부 (서브페이지)
+  const budget = get('#budget');
+  const concern = get('#concern');
   const methodEl = form.querySelector('input[name="method"]:checked');
   const method = methodEl ? methodEl.value : '';
   const consent = form.querySelector('#consent').checked;
 
   // Validation - 모든 필드 필수
-  if (!name) {
-    showValidationError('대표자명을 입력해주세요.');
-    return;
-  }
+  if (!name) return showValidationError('대표자명을 입력해주세요.');
 
   const phoneClean = phone.replace(/-/g, '');
   if (!/^01[0-9]{8,9}$/.test(phoneClean)) {
-    showValidationError('올바른 연락처를 입력해주세요. (예: 010-1234-5678)');
-    return;
+    return showValidationError('올바른 연락처를 입력해주세요. (예: 010-1234-5678)');
   }
 
-  if (!company) {
-    showValidationError('업체명을 입력해주세요.');
-    return;
-  }
+  if (!company) return showValidationError('업체명/사무소명을 입력해주세요.');
+  if (!business) return showValidationError('업종/분야를 선택해주세요.');
+  if (!region) return showValidationError('지역을 입력해주세요.');
 
-  if (!business) {
-    showValidationError('업종을 선택해주세요.');
-    return;
-  }
+  // 서브페이지에만 있는 필드 — 존재할 때만 검증
+  if (form.querySelector('#years') && !years) return showValidationError('운영 기간을 선택해주세요.');
+  if (form.querySelector('#staff') && !staff) return showValidationError('직원 수를 선택해주세요.');
 
-  if (!region) {
-    showValidationError('지역을 입력해주세요.');
-    return;
-  }
+  if (!budget) return showValidationError('월 마케팅 예산을 선택해주세요.');
 
-  if (!budget) {
-    showValidationError('월 마케팅 예산을 선택해주세요.');
-    return;
-  }
+  if (form.querySelector('#current') && !current) return showValidationError('현재 마케팅 진행 여부를 선택해주세요.');
 
-  if (!concern) {
-    showValidationError('가장 시급한 고민을 선택해주세요.');
-    return;
-  }
+  if (!concern) return showValidationError('가장 시급한 고민을 선택해주세요.');
+  if (!method) return showValidationError('희망 상담 방식을 선택해주세요.');
+  if (!consent) return showValidationError('개인정보 수집 동의가 필요합니다.');
 
-  if (!method) {
-    showValidationError('희망 상담 방식을 선택해주세요.');
-    return;
-  }
-
-  if (!consent) {
-    showValidationError('개인정보 수집 동의가 필요합니다.');
-    return;
-  }
-
-  const formData = { name, phone, company, business, region, budget, concern, method, consent };
+  const formData = { name, phone, company, business, region, years, staff, current, budget, concern, method, consent };
   submitForm(formData);
 }
 
@@ -420,12 +405,103 @@ function showValidationError(message) {
       errorEl.style.display = 'none';
     }, 3000);
   }
+  return false;
 }
 
 // 폼 데이터 처리 — contact@dcdcompany.com으로 이메일 발송
 const CONTACT_EMAIL = 'contact@dcdcompany.com';
 
 const BUSINESS_LABELS = {
+  // 음식점
+  'food-korean': '한식 음식점',
+  'food-western': '양식/이탈리안',
+  'food-japanese': '일식 음식점',
+  'food-chinese': '중식 음식점',
+  'food-snack': '분식/김밥',
+  'food-chicken': '치킨/피자',
+  'food-meat': '고깃집/삼겹살',
+  'food-pub': '주점/포차',
+  'food-other': '기타 음식점',
+  // 카페/디저트
+  'cafe-general': '카페',
+  'cafe-dessert': '디저트 카페',
+  'cafe-bakery': '베이커리',
+  'cafe-study': '스터디카페',
+  'cafe-brunch': '브런치 카페',
+  // 미용/뷰티
+  'beauty-hair': '미용실',
+  'beauty-nail': '네일샵',
+  'beauty-skin': '피부관리실',
+  'beauty-eyelash': '속눈썹/왁싱',
+  'beauty-massage': '마사지/스파',
+  // 피트니스/건강
+  'fit-gym': '헬스장/피트니스',
+  'fit-pt': 'PT 스튜디오',
+  'fit-pilates': '필라테스',
+  'fit-yoga': '요가',
+  'fit-crossfit': '크로스핏/복싱',
+  'fit-golf': '실내 골프',
+  // 학원/교육
+  'edu-entrance': '입시 학원',
+  'edu-language': '어학 학원',
+  'edu-art': '예체능 학원',
+  'edu-kids': '유아/아동 교육',
+  'edu-coding': '코딩/IT 학원',
+  'edu-academy': '학원/교육',
+  // 소매/리테일
+  'retail-fashion': '의류 매장',
+  'retail-goods': '잡화/생활용품',
+  'retail-flower': '꽃집',
+  'retail-pet': '펫샵',
+  'retail-furniture': '인테리어/가구',
+  // 서비스
+  'svc-studio': '스튜디오 (사진/영상)',
+  'svc-car': '자동차 정비/세차',
+  'svc-cleaning': '청소/세탁',
+  'svc-repair': '수리/리모델링',
+  'svc-other': '기타 서비스',
+  // 의료 — 일반과
+  'med-internal': '내과',
+  'med-surgery': '외과',
+  'med-orthopedic': '정형외과',
+  'med-neurosurgery': '신경외과',
+  'med-obgyn': '산부인과',
+  'med-pediatric': '소아청소년과',
+  'med-family': '가정의학과',
+  // 의료 — 전문 진료과
+  'med-dermatology': '피부과',
+  'med-plastic': '성형외과',
+  'med-ophthalmology': '안과',
+  'med-ent': '이비인후과',
+  'med-urology': '비뇨기과',
+  'med-rehab': '재활의학과',
+  'med-psychiatry': '정신건강의학과',
+  // 의료 — 치과/한방
+  'med-dental': '치과 (일반)',
+  'med-dental-ortho': '치과 (교정/임플란트)',
+  'med-oriental': '한의원',
+  // 의료 — 기타
+  'med-vet': '동물병원',
+  'med-pharmacy': '약국',
+  'med-other': '기타 의료기관',
+  // 법률/세무/회계
+  'law-attorney': '변호사 (개업)',
+  'law-firm': '법무법인',
+  'law-tax': '세무사',
+  'law-cpa': '공인회계사 (CPA)',
+  'law-labor': '노무사',
+  'law-patent': '변리사',
+  'law-broker': '공인중개사',
+  'law-admin': '행정사',
+  'law-claim': '손해사정사',
+  'law-other': '기타 전문직',
+  // 기타 전문직
+  'pro-consult': '경영 컨설턴트',
+  'pro-architect': '건축사',
+  'pro-academy': '학원/교육원',
+  'pro-other': '기타 전문직',
+  'other': '기타',
+  // Legacy 호환
   restaurant: '음식점',
   cafe: '카페',
   beauty: '미용실/네일샵',
@@ -433,17 +509,48 @@ const BUSINESS_LABELS = {
   academy: '학원',
   fitness: '피트니스/요가',
   retail: '소매/유통',
-  profession: '전문직',
-  other: '기타'
+  profession: '전문직'
 };
 
 const BUDGET_LABELS = {
   'under-30': '월 30만원 이하',
   '30-50': '월 30~50만원',
   '50-100': '월 50~100만원',
+  'under-100': '월 100만원 이하',
   '100-300': '월 100~300만원',
+  '300-500': '월 300~500만원',
+  '500-1000': '월 500~1,000만원',
   'over-300': '월 300만원 이상',
+  'over-1000': '월 1,000만원 이상',
   'undecided': '상담 후 결정'
+};
+
+const YEARS_LABELS = {
+  'under-1': '1년 미만',
+  '1-3': '1~3년',
+  '3-5': '3~5년',
+  '5-10': '5~10년',
+  'over-10': '10년 이상'
+};
+
+const STAFF_LABELS = {
+  'solo': '대표 1인',
+  '2-3': '2~3명',
+  '2-5': '2~5명',
+  '4-7': '4~7명',
+  '6-10': '6~10명',
+  '8-15': '8~15명',
+  '11-30': '11~30명',
+  'over-15': '16명 이상',
+  'over-30': '31명 이상'
+};
+
+const CURRENT_LABELS = {
+  'none': '전혀 진행하지 않고 있음',
+  'self': '대표/직원이 직접 운영 중',
+  'other-agency': '다른 마케팅 업체 이용 중',
+  'part-time': '아르바이트/프리랜서 활용',
+  'other': '기타'
 };
 
 const CONCERN_LABELS = {
@@ -454,6 +561,11 @@ const CONCERN_LABELS = {
   ads: '광고비 효과를 모르겠어요',
   branding: '브랜드를 키우고 싶어요',
   competition: '주변 경쟁이 심해졌어요',
+  repeat: '단골/재방문이 적어요',
+  delivery: '배달앱 노출이 안 돼요',
+  homepage: '홈페이지 신규 제작/리뉴얼',
+  blog: '블로그 운영 어려움',
+  compliance: '의료/광고법 컴플라이언스 우려',
   other: '기타 (상담 시 설명)'
 };
 
@@ -468,8 +580,17 @@ function submitForm(data) {
   const budgetLabel = BUDGET_LABELS[data.budget] || data.budget;
   const concernLabel = CONCERN_LABELS[data.concern] || data.concern;
   const methodLabel = METHOD_LABELS[data.method] || data.method;
+  const yearsLabel = data.years ? (YEARS_LABELS[data.years] || data.years) : '';
+  const staffLabel = data.staff ? (STAFF_LABELS[data.staff] || data.staff) : '';
+  const currentLabel = data.current ? (CURRENT_LABELS[data.current] || data.current) : '';
 
-  const subject = `[몽땅마케팅 상담 신청] ${data.name} 사장님 / ${businessLabel} / ${data.region}`;
+  const subject = `[몽땅마케팅 상담 신청] ${data.name} / ${businessLabel} / ${data.region}`;
+
+  // 서브페이지 추가 필드 섹션 (있을 때만 추가)
+  const operationsSection = (yearsLabel || staffLabel || currentLabel)
+    ? `\n━━━━━━━━━━━━━━━━━━━━━━\n■ 운영 현황\n━━━━━━━━━━━━━━━━━━━━━━${yearsLabel ? `\n▸ 운영 기간: ${yearsLabel}` : ''}${staffLabel ? `\n▸ 직원 규모: ${staffLabel}` : ''}${currentLabel ? `\n▸ 현재 마케팅: ${currentLabel}` : ''}\n`
+    : '';
+
   const body = `안녕하세요, 몽땅마케팅 무료 상담을 신청합니다.
 
 ━━━━━━━━━━━━━━━━━━━━━━
@@ -477,10 +598,10 @@ function submitForm(data) {
 ━━━━━━━━━━━━━━━━━━━━━━
 ▸ 대표자명: ${data.name}
 ▸ 연락처: ${data.phone}
-▸ 업체명: ${data.company}
-▸ 업종: ${businessLabel}
+▸ 업체명/사무소명: ${data.company}
+▸ 업종/분야: ${businessLabel}
 ▸ 지역: ${data.region}
-
+${operationsSection}
 ━━━━━━━━━━━━━━━━━━━━━━
 ■ 상담 정보
 ━━━━━━━━━━━━━━━━━━━━━━

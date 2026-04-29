@@ -255,7 +255,7 @@
           <div class="contact-details">
             <div class="contact-detail">
               <div class="contact-detail-icon">📞</div>
-              <span>대표번호: 02-1234-5678</span>
+              <span>대표번호: 010-2339-9321</span>
             </div>
             <div class="contact-detail">
               <div class="contact-detail-icon">⏰</div>
@@ -267,7 +267,7 @@
             </div>
             <div class="contact-detail">
               <div class="contact-detail-icon">📍</div>
-              <span>서울특별시 강남구 테헤란로 123</span>
+              <span>청주시 청원구 율량동 881</span>
             </div>
           </div>
         </div>
@@ -292,14 +292,60 @@
                 <label for="business">업종 <span class="required">*</span></label>
                 <select id="business" class="form-select" required>
                   <option value="">업종을 선택하세요</option>
-                  <option value="restaurant">음식점</option>
-                  <option value="cafe">카페</option>
-                  <option value="beauty">미용실/네일샵</option>
-                  <option value="hospital">병원/의원</option>
-                  <option value="academy">학원</option>
-                  <option value="fitness">피트니스/요가</option>
-                  <option value="retail">소매/유통</option>
-                  <option value="profession">전문직</option>
+                  <optgroup label="음식점">
+                    <option value="food-korean">한식 음식점</option>
+                    <option value="food-western">양식/이탈리안</option>
+                    <option value="food-japanese">일식 음식점</option>
+                    <option value="food-chinese">중식 음식점</option>
+                    <option value="food-snack">분식/김밥</option>
+                    <option value="food-chicken">치킨/피자</option>
+                    <option value="food-meat">고깃집/삼겹살</option>
+                    <option value="food-pub">주점/포차</option>
+                    <option value="food-other">기타 음식점</option>
+                  </optgroup>
+                  <optgroup label="카페/디저트">
+                    <option value="cafe-general">일반 카페</option>
+                    <option value="cafe-dessert">디저트 카페</option>
+                    <option value="cafe-bakery">베이커리</option>
+                    <option value="cafe-study">스터디카페</option>
+                    <option value="cafe-brunch">브런치 카페</option>
+                  </optgroup>
+                  <optgroup label="미용/뷰티">
+                    <option value="beauty-hair">미용실</option>
+                    <option value="beauty-nail">네일샵</option>
+                    <option value="beauty-skin">피부관리실</option>
+                    <option value="beauty-eyelash">속눈썹/왁싱</option>
+                    <option value="beauty-massage">마사지/스파</option>
+                  </optgroup>
+                  <optgroup label="피트니스/건강">
+                    <option value="fit-gym">헬스장/피트니스</option>
+                    <option value="fit-pt">PT 스튜디오</option>
+                    <option value="fit-pilates">필라테스</option>
+                    <option value="fit-yoga">요가</option>
+                    <option value="fit-crossfit">크로스핏/복싱</option>
+                    <option value="fit-golf">실내 골프</option>
+                  </optgroup>
+                  <optgroup label="학원/교육">
+                    <option value="edu-entrance">입시 학원</option>
+                    <option value="edu-language">어학 학원</option>
+                    <option value="edu-art">예체능 학원</option>
+                    <option value="edu-kids">유아/아동 교육</option>
+                    <option value="edu-coding">코딩/IT 학원</option>
+                  </optgroup>
+                  <optgroup label="소매/리테일">
+                    <option value="retail-fashion">의류 매장</option>
+                    <option value="retail-goods">잡화/생활용품</option>
+                    <option value="retail-flower">꽃집</option>
+                    <option value="retail-pet">펫샵/동물용품</option>
+                    <option value="retail-furniture">인테리어/가구</option>
+                  </optgroup>
+                  <optgroup label="서비스">
+                    <option value="svc-studio">스튜디오 (사진/영상)</option>
+                    <option value="svc-car">자동차 정비/세차</option>
+                    <option value="svc-cleaning">청소/세탁</option>
+                    <option value="svc-repair">수리/리모델링</option>
+                    <option value="svc-other">기타 서비스</option>
+                  </optgroup>
                   <option value="other">기타</option>
                 </select>
               </div>
@@ -308,6 +354,30 @@
               <div class="form-group">
                 <label for="region">지역 <span class="required">*</span></label>
                 <input type="text" id="region" class="form-input" placeholder="예: 서울 강남구" required>
+              </div>
+              <div class="form-group">
+                <label for="years">운영 기간 <span class="required">*</span></label>
+                <select id="years" class="form-select" required>
+                  <option value="">운영 기간 선택</option>
+                  <option value="under-1">1년 미만 (개업 준비 포함)</option>
+                  <option value="1-3">1~3년</option>
+                  <option value="3-5">3~5년</option>
+                  <option value="5-10">5~10년</option>
+                  <option value="over-10">10년 이상</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="staff">직원 수 <span class="required">*</span></label>
+                <select id="staff" class="form-select" required>
+                  <option value="">직원 규모 선택</option>
+                  <option value="solo">사장님 1인</option>
+                  <option value="2-3">2~3명</option>
+                  <option value="4-7">4~7명</option>
+                  <option value="8-15">8~15명</option>
+                  <option value="over-15">16명 이상</option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="budget">월 마케팅 예산 <span class="required">*</span></label>
@@ -323,6 +393,17 @@
               </div>
             </div>
             <div class="form-group">
+              <label for="current">현재 마케팅 진행 여부 <span class="required">*</span></label>
+              <select id="current" class="form-select" required>
+                <option value="">현재 상황 선택</option>
+                <option value="none">전혀 진행하지 않고 있음</option>
+                <option value="self">사장님/직원이 직접 운영 중</option>
+                <option value="other-agency">다른 마케팅 업체 이용 중</option>
+                <option value="part-time">아르바이트/프리랜서 활용</option>
+                <option value="other">기타</option>
+              </select>
+            </div>
+            <div class="form-group">
               <label for="concern">가장 시급한 고민 <span class="required">*</span></label>
               <select id="concern" class="form-select" required>
                 <option value="">고민을 선택하세요</option>
@@ -333,6 +414,8 @@
                 <option value="ads">광고비 효과를 모르겠어요</option>
                 <option value="branding">브랜드를 키우고 싶어요</option>
                 <option value="competition">주변 경쟁이 심해졌어요</option>
+                <option value="repeat">단골/재방문이 적어요</option>
+                <option value="delivery">배달앱 노출이 안 돼요</option>
                 <option value="other">기타 (상담 시 설명)</option>
               </select>
             </div>
@@ -374,7 +457,7 @@
       <a href="column/index.html">칼럼</a>
     </div>
     <p>주식회사 몽땅마케팅 ㅣ 대표: 홍길동 ㅣ 사업자등록번호: 123-45-67890</p>
-    <p>서울특별시 강남구 테헤란로 123 ㅣ 대표번호: 02-1234-5678</p>
+    <p>청주시 청원구 율량동 881 ㅣ 대표번호: 010-2339-9321</p>
     <p style="margin-top: 0.5rem;">© 2026 몽땅마케팅. All rights reserved.</p>
   </footer>
 

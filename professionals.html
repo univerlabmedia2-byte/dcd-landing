@@ -14,8 +14,9 @@
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/subpage.css">
+  <link rel="stylesheet" href="css/premium-theme.css">
 </head>
-<body>
+<body class="premium">
 
   <!-- Global Navigation -->
   <header class="navbar" id="navbar">
@@ -41,9 +42,9 @@
   <!-- Hero -->
   <section class="subpage-hero">
     <div class="subpage-hero-content">
-      <span class="hero-badge">전문직 디지털 브랜딩</span>
+      <span class="hero-badge">PREMIUM DIGITAL BRANDING</span>
       <h1>전문가의 품격에 맞는<br><span>신뢰도 있는 마케팅</span></h1>
-      <p>병원·법률사무소·세무사·컨설턴트<br>전문직만의 마케팅 방법은 다릅니다</p>
+      <p>병원·법무법인·세무사·컨설턴트<br>전문가만의 디지털 브랜딩, 그 격을 다르게 만듭니다</p>
       <a href="#contact" class="btn-primary">무료 상담 받기 →</a>
     </div>
   </section>
@@ -205,7 +206,7 @@
   <section class="subpage-section bg-cream">
     <div class="container">
       <div class="subpage-cta-block fade-in">
-        <h3>전문가의 디지털 브랜딩, 이제 시작하세요</h3>
+        <h3>전문가의 디지털 브랜딩, <span>이제 시작하세요</span></h3>
         <p>법령 준수와 효과를 모두 챙겨드립니다. 무료 상담부터 시작하세요.</p>
         <a href="#contact" class="btn-primary">지금 무료 상담 받기</a>
       </div>
@@ -219,12 +220,12 @@
       <p class="section-subtitle fade-in">전문직 마케팅 담당자가 24시간 이내 연락드립니다</p>
       <div class="contact-grid">
         <div class="contact-info fade-in">
-          <h3>전문직의 디지털 성장을<br>함께 만들어갑니다</h3>
+          <h3>전문가의 디지털 성장을<br>함께 만들어갑니다</h3>
           <p>의료·법률·세무 등 전문 분야 마케팅 경험이 풍부한 전담 매니저가 사무소/병원의 상황에 맞는 전략을 제안드립니다.</p>
           <div class="contact-details">
             <div class="contact-detail">
               <div class="contact-detail-icon">📞</div>
-              <span>대표번호: 02-1234-5678</span>
+              <span>대표번호: 010-2339-9321</span>
             </div>
             <div class="contact-detail">
               <div class="contact-detail-icon">⏰</div>
@@ -236,7 +237,7 @@
             </div>
             <div class="contact-detail">
               <div class="contact-detail-icon">📍</div>
-              <span>서울특별시 강남구 테헤란로 123</span>
+              <span>청주시 청원구 율량동 881</span>
             </div>
           </div>
         </div>
@@ -261,10 +262,51 @@
                 <label for="business">분야 <span class="required">*</span></label>
                 <select id="business" class="form-select" required>
                   <option value="">분야를 선택하세요</option>
-                  <option value="hospital">병원/의원</option>
-                  <option value="profession">법률/세무/회계</option>
-                  <option value="academy">학원/교육</option>
-                  <option value="other">기타 전문직</option>
+                  <optgroup label="의료 — 일반과">
+                    <option value="med-internal">내과</option>
+                    <option value="med-surgery">외과</option>
+                    <option value="med-orthopedic">정형외과</option>
+                    <option value="med-neurosurgery">신경외과</option>
+                    <option value="med-obgyn">산부인과</option>
+                    <option value="med-pediatric">소아청소년과</option>
+                    <option value="med-family">가정의학과</option>
+                  </optgroup>
+                  <optgroup label="의료 — 전문 진료과">
+                    <option value="med-dermatology">피부과</option>
+                    <option value="med-plastic">성형외과</option>
+                    <option value="med-ophthalmology">안과</option>
+                    <option value="med-ent">이비인후과</option>
+                    <option value="med-urology">비뇨기과</option>
+                    <option value="med-rehab">재활의학과</option>
+                    <option value="med-psychiatry">정신건강의학과</option>
+                  </optgroup>
+                  <optgroup label="의료 — 치과/한방">
+                    <option value="med-dental">치과 (일반)</option>
+                    <option value="med-dental-ortho">치과 (교정/임플란트)</option>
+                    <option value="med-oriental">한의원</option>
+                  </optgroup>
+                  <optgroup label="의료 — 기타">
+                    <option value="med-vet">동물병원</option>
+                    <option value="med-pharmacy">약국</option>
+                    <option value="med-other">기타 의료기관</option>
+                  </optgroup>
+                  <optgroup label="법률/세무/회계">
+                    <option value="law-attorney">변호사 (개업)</option>
+                    <option value="law-firm">법무법인</option>
+                    <option value="law-tax">세무사</option>
+                    <option value="law-cpa">공인회계사 (CPA)</option>
+                    <option value="law-labor">노무사</option>
+                    <option value="law-patent">변리사</option>
+                    <option value="law-broker">공인중개사</option>
+                    <option value="law-admin">행정사</option>
+                    <option value="law-claim">손해사정사</option>
+                  </optgroup>
+                  <optgroup label="기타 전문직">
+                    <option value="pro-consult">경영 컨설턴트</option>
+                    <option value="pro-architect">건축사</option>
+                    <option value="pro-academy">학원/교육원</option>
+                    <option value="pro-other">기타 전문직</option>
+                  </optgroup>
                 </select>
               </div>
             </div>
@@ -274,17 +316,52 @@
                 <input type="text" id="region" class="form-input" placeholder="예: 서울 강남구" required>
               </div>
               <div class="form-group">
+                <label for="years">개업 기간 <span class="required">*</span></label>
+                <select id="years" class="form-select" required>
+                  <option value="">개업 기간 선택</option>
+                  <option value="under-1">1년 미만 (개원/개업 준비 포함)</option>
+                  <option value="1-3">1~3년</option>
+                  <option value="3-5">3~5년</option>
+                  <option value="5-10">5~10년</option>
+                  <option value="over-10">10년 이상</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="staff">직원 수 <span class="required">*</span></label>
+                <select id="staff" class="form-select" required>
+                  <option value="">직원 규모 선택</option>
+                  <option value="solo">대표 1인</option>
+                  <option value="2-5">2~5명</option>
+                  <option value="6-10">6~10명</option>
+                  <option value="11-30">11~30명</option>
+                  <option value="over-30">31명 이상</option>
+                </select>
+              </div>
+              <div class="form-group">
                 <label for="budget">월 마케팅 예산 <span class="required">*</span></label>
                 <select id="budget" class="form-select" required>
                   <option value="">예산 범위 선택</option>
-                  <option value="under-30">월 100만원 이하</option>
-                  <option value="30-50">월 100~300만원</option>
-                  <option value="50-100">월 300~500만원</option>
-                  <option value="100-300">월 500~1,000만원</option>
-                  <option value="over-300">월 1,000만원 이상</option>
+                  <option value="under-100">월 100만원 이하</option>
+                  <option value="100-300">월 100~300만원</option>
+                  <option value="300-500">월 300~500만원</option>
+                  <option value="500-1000">월 500~1,000만원</option>
+                  <option value="over-1000">월 1,000만원 이상</option>
                   <option value="undecided">상담 후 결정</option>
                 </select>
               </div>
+            </div>
+            <div class="form-group">
+              <label for="current">현재 마케팅 진행 여부 <span class="required">*</span></label>
+              <select id="current" class="form-select" required>
+                <option value="">현재 상황 선택</option>
+                <option value="none">전혀 진행하지 않고 있음</option>
+                <option value="self">대표/직원이 직접 운영 중</option>
+                <option value="other-agency">다른 마케팅 업체 이용 중</option>
+                <option value="part-time">아르바이트/프리랜서 활용</option>
+                <option value="other">기타</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="concern">가장 시급한 고민 <span class="required">*</span></label>
@@ -292,10 +369,12 @@
                 <option value="">고민을 선택하세요</option>
                 <option value="newcustomers">신규 환자/고객 확보</option>
                 <option value="branding">전문가 브랜딩 강화</option>
-                <option value="sns">홈페이지/블로그 운영</option>
+                <option value="homepage">홈페이지 신규 제작/리뉴얼</option>
+                <option value="blog">블로그 운영 어려움</option>
                 <option value="ads">검색광고 효과 부족</option>
                 <option value="reviews">평판/리뷰 관리 필요</option>
-                <option value="competition">주변 경쟁이 심해짐</option>
+                <option value="compliance">의료/광고법 컴플라이언스 우려</option>
+                <option value="competition">주변 경쟁 심화</option>
                 <option value="other">기타 (상담 시 설명)</option>
               </select>
             </div>
@@ -337,7 +416,7 @@
       <a href="column/index.html">칼럼</a>
     </div>
     <p>주식회사 몽땅마케팅 ㅣ 대표: 홍길동 ㅣ 사업자등록번호: 123-45-67890</p>
-    <p>서울특별시 강남구 테헤란로 123 ㅣ 대표번호: 02-1234-5678</p>
+    <p>청주시 청원구 율량동 881 ㅣ 대표번호: 010-2339-9321</p>
     <p style="margin-top: 0.5rem;">© 2026 몽땅마케팅. All rights reserved.</p>
   </footer>
 
