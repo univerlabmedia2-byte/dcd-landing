@@ -764,12 +764,20 @@ input, select, textarea {
 .case-visual {
   background: var(--color-bg-white);
   border-radius: var(--radius-md);
-  height: 200px;
+  height: 240px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
   box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.case-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .case-duration {
