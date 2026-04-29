@@ -317,12 +317,16 @@ function handleFormSubmit(e) {
   const form = e.target;
   const name = form.querySelector('#name').value.trim();
   const phone = form.querySelector('#phone').value.trim();
+  const company = form.querySelector('#company').value.trim();
   const business = form.querySelector('#business').value;
   const region = form.querySelector('#region').value.trim();
-  const company = form.querySelector('#company').value.trim();
+  const budget = form.querySelector('#budget').value;
+  const concern = form.querySelector('#concern').value;
+  const methodEl = form.querySelector('input[name="method"]:checked');
+  const method = methodEl ? methodEl.value : '';
   const consent = form.querySelector('#consent').checked;
 
-  // Validation
+  // Validation - 모든 필드 필수
   if (!name) {
     showValidationError('대표자명을 입력해주세요.');
     return;
@@ -334,8 +338,33 @@ function handleFormSubmit(e) {
     return;
   }
 
+  if (!company) {
+    showValidationError('업체명을 입력해주세요.');
+    return;
+  }
+
   if (!business) {
     showValidationError('업종을 선택해주세요.');
+    return;
+  }
+
+  if (!region) {
+    showValidationError('지역을 입력해주세요.');
+    return;
+  }
+
+  if (!budget) {
+    showValidationError('월 마케팅 예산을 선택해주세요.');
+    return;
+  }
+
+  if (!concern) {
+    showValidationError('가장 시급한 고민을 선택해주세요.');
+    return;
+  }
+
+  if (!method) {
+    showValidationError('희망 상담 방식을 선택해주세요.');
     return;
   }
 
@@ -344,7 +373,7 @@ function handleFormSubmit(e) {
     return;
   }
 
-  const formData = { name, phone, business, region, company, consent };
+  const formData = { name, phone, company, business, region, budget, concern, method, consent };
   submitForm(formData);
 }
 
@@ -370,25 +399,64 @@ const BUSINESS_LABELS = {
   academy: '학원',
   fitness: '피트니스/요가',
   retail: '소매/유통',
+  profession: '전문직',
   other: '기타'
+};
+
+const BUDGET_LABELS = {
+  'under-30': '월 30만원 이하',
+  '30-50': '월 30~50만원',
+  '50-100': '월 50~100만원',
+  '100-300': '월 100~300만원',
+  'over-300': '월 300만원 이상',
+  'undecided': '상담 후 결정'
+};
+
+const CONCERN_LABELS = {
+  sales: '매출이 떨어지고 있어요',
+  newcustomers: '신규 고객 유입이 부족해요',
+  reviews: '리뷰 관리가 어려워요',
+  sns: 'SNS 운영을 못 하고 있어요',
+  ads: '광고비 효과를 모르겠어요',
+  branding: '브랜드를 키우고 싶어요',
+  competition: '주변 경쟁이 심해졌어요',
+  other: '기타 (상담 시 설명)'
+};
+
+const METHOD_LABELS = {
+  phone: '📞 전화 상담',
+  visit: '🚗 방문 상담',
+  video: '💻 화상 상담'
 };
 
 function submitForm(data) {
   const businessLabel = BUSINESS_LABELS[data.business] || data.business;
+  const budgetLabel = BUDGET_LABELS[data.budget] || data.budget;
+  const concernLabel = CONCERN_LABELS[data.concern] || data.concern;
+  const methodLabel = METHOD_LABELS[data.method] || data.method;
 
-  const subject = `[몽땅마케팅 상담 신청] ${data.name} 사장님 / ${businessLabel}`;
+  const subject = `[몽땅마케팅 상담 신청] ${data.name} 사장님 / ${businessLabel} / ${data.region}`;
   const body = `안녕하세요, 몽땅마케팅 무료 상담을 신청합니다.
 
 ━━━━━━━━━━━━━━━━━━━━━━
-■ 신청 정보
+■ 기본 정보
 ━━━━━━━━━━━━━━━━━━━━━━
-
 ▸ 대표자명: ${data.name}
 ▸ 연락처: ${data.phone}
+▸ 업체명: ${data.company}
 ▸ 업종: ${businessLabel}
-▸ 지역: ${data.region || '(미입력)'}
-▸ 업체명: ${data.company || '(미입력)'}
+▸ 지역: ${data.region}
 
+━━━━━━━━━━━━━━━━━━━━━━
+■ 상담 정보
+━━━━━━━━━━━━━━━━━━━━━━
+▸ 월 마케팅 예산: ${budgetLabel}
+▸ 가장 시급한 고민: ${concernLabel}
+▸ 희망 상담 방식: ${methodLabel}
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 동의 정보
+━━━━━━━━━━━━━━━━━━━━━━
 ▸ 개인정보 수집 동의: ${data.consent ? '동의' : '미동의'}
 ▸ 신청 일시: ${new Date().toLocaleString('ko-KR')}
 

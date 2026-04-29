@@ -1300,6 +1300,48 @@ input, select, textarea {
   gap: 1rem;
 }
 
+.form-radio-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.form-radio {
+  position: relative;
+  cursor: pointer;
+}
+
+.form-radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.form-radio span {
+  display: block;
+  text-align: center;
+  padding: 0.7rem 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  color: rgba(232, 244, 245, 0.85);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+
+.form-radio:hover span {
+  border-color: var(--color-accent);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.form-radio input[type="radio"]:checked + span {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+  font-weight: 700;
+}
+
 .form-consent {
   display: flex;
   align-items: flex-start;
@@ -1590,6 +1632,10 @@ input, select, textarea {
   }
 
   .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-radio-group {
     grid-template-columns: 1fr;
   }
 

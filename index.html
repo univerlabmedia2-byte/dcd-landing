@@ -658,6 +658,10 @@
             </div>
             <div class="form-row">
               <div class="form-group">
+                <label for="company">업체명 <span class="required">*</span></label>
+                <input type="text" id="company" class="form-input" placeholder="예: ○○카페" required>
+              </div>
+              <div class="form-group">
                 <label for="business">업종 <span class="required">*</span></label>
                 <select id="business" class="form-select" required>
                   <option value="">업종을 선택하세요</option>
@@ -668,17 +672,59 @@
                   <option value="academy">학원</option>
                   <option value="fitness">피트니스/요가</option>
                   <option value="retail">소매/유통</option>
+                  <option value="profession">전문직</option>
                   <option value="other">기타</option>
                 </select>
               </div>
+            </div>
+            <div class="form-row">
               <div class="form-group">
-                <label for="region">지역</label>
-                <input type="text" id="region" class="form-input" placeholder="예: 서울 강남구">
+                <label for="region">지역 <span class="required">*</span></label>
+                <input type="text" id="region" class="form-input" placeholder="예: 서울 강남구" required>
+              </div>
+              <div class="form-group">
+                <label for="budget">월 마케팅 예산 <span class="required">*</span></label>
+                <select id="budget" class="form-select" required>
+                  <option value="">예산 범위 선택</option>
+                  <option value="under-30">월 30만원 이하</option>
+                  <option value="30-50">월 30~50만원</option>
+                  <option value="50-100">월 50~100만원</option>
+                  <option value="100-300">월 100~300만원</option>
+                  <option value="over-300">월 300만원 이상</option>
+                  <option value="undecided">상담 후 결정</option>
+                </select>
               </div>
             </div>
             <div class="form-group">
-              <label for="company">업체명</label>
-              <input type="text" id="company" class="form-input" placeholder="업체명을 입력하세요 (선택)">
+              <label for="concern">가장 시급한 고민 <span class="required">*</span></label>
+              <select id="concern" class="form-select" required>
+                <option value="">고민을 선택하세요</option>
+                <option value="sales">매출이 떨어지고 있어요</option>
+                <option value="newcustomers">신규 고객 유입이 부족해요</option>
+                <option value="reviews">리뷰 관리가 어려워요</option>
+                <option value="sns">SNS 운영을 못 하고 있어요</option>
+                <option value="ads">광고비 효과를 모르겠어요</option>
+                <option value="branding">브랜드를 키우고 싶어요</option>
+                <option value="competition">주변 경쟁이 심해졌어요</option>
+                <option value="other">기타 (상담 시 설명)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>희망 상담 방식 <span class="required">*</span></label>
+              <div class="form-radio-group">
+                <label class="form-radio">
+                  <input type="radio" name="method" value="phone" required>
+                  <span>📞 전화 상담</span>
+                </label>
+                <label class="form-radio">
+                  <input type="radio" name="method" value="visit">
+                  <span>🚗 방문 상담</span>
+                </label>
+                <label class="form-radio">
+                  <input type="radio" name="method" value="video">
+                  <span>💻 화상 상담</span>
+                </label>
+              </div>
             </div>
             <div class="form-consent">
               <input type="checkbox" id="consent" required>
