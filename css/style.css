@@ -1,31 +1,42 @@
 /* ============================================
-   DCDcompany Landing Page - Style
-   친근+따뜻한 톤 (베이지/브라운 + 오렌지 포인트)
+   몽땅마케팅 Landing Page - Style
+   메인 #1fa3a4 (틸/시안) + 코랄 오렌지 포인트
    ============================================ */
 
 /* --- CSS Variables --- */
 :root {
-  --color-primary: #5B4A3F;
-  --color-primary-light: #7A6558;
-  --color-accent: #FF8C42;
-  --color-accent-dark: #E67A30;
-  --color-accent-light: #FFA86A;
+  /* Primary - 메인 컬러 (틸/시안) */
+  --color-primary: #1fa3a4;
+  --color-primary-dark: #168889;
+  --color-primary-light: #4DB8B9;
+  --color-primary-lighter: #E8F4F5;
+
+  /* Accent - CTA / 강조 (보색 코랄 오렌지) */
+  --color-accent: #FF7849;
+  --color-accent-dark: #E66639;
+  --color-accent-light: #FF9670;
+
+  /* Background */
   --color-bg-white: #FFFFFF;
-  --color-bg-cream: #FFF8F0;
-  --color-bg-beige: #F5EDE3;
-  --color-bg-warm-dark: #3D3028;
-  --color-text: #2D2A26;
-  --color-text-secondary: #8B7E74;
-  --color-text-on-dark: #F5EDE3;
-  --color-border: #E8DDD1;
+  --color-bg-cream: #F7FAFB;     /* 짝수 섹션 - 살짝 틸 톤의 화이트 */
+  --color-bg-beige: #E8F4F5;     /* 카드 배경 - 라이트 틸 */
+  --color-bg-warm-dark: #173738; /* 다크 섹션 - 딥 틸 */
+
+  /* Text */
+  --color-text: #1A2A2B;
+  --color-text-secondary: #6B7E80;
+  --color-text-on-dark: #E8F4F5;
+  --color-border: #DDE8E9;
+
+  /* Status */
   --color-success: #6BBF59;
-  --color-highlight: #FFF0E0;
+  --color-highlight: #E8F4F5;
 
   --font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --max-width: 1200px;
-  --shadow-card: 0 4px 24px rgba(91, 74, 63, 0.08);
-  --shadow-card-hover: 0 8px 32px rgba(91, 74, 63, 0.15);
-  --shadow-button: 0 4px 15px rgba(255, 140, 66, 0.35);
+  --shadow-card: 0 4px 24px rgba(31, 163, 164, 0.08);
+  --shadow-card-hover: 0 8px 32px rgba(31, 163, 164, 0.18);
+  --shadow-button: 0 4px 15px rgba(255, 120, 73, 0.35);
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
@@ -130,7 +141,7 @@ input, select, textarea {
 .btn-primary:hover {
   background: var(--color-accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 140, 66, 0.45);
+  box-shadow: 0 6px 20px rgba(255, 120, 73, 0.45);
 }
 
 .btn-secondary {
@@ -172,7 +183,7 @@ input, select, textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(160deg, #F5EDE3 0%, #FFF8F0 50%, #FFF0E0 100%);
+  background: linear-gradient(160deg, #E8F4F5 0%, #F7FAFB 50%, #FFF4EE 100%);
   text-align: center;
   padding: 2rem 1.5rem;
   position: relative;
@@ -186,7 +197,7 @@ input, select, textarea {
   right: -30%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(255, 140, 66, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(31, 163, 164, 0.12) 0%, transparent 70%);
   border-radius: 50%;
 }
 
@@ -197,7 +208,7 @@ input, select, textarea {
   left: -20%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(91, 74, 63, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 120, 73, 0.08) 0%, transparent 70%);
   border-radius: 50%;
 }
 
@@ -209,8 +220,8 @@ input, select, textarea {
 
 .hero-badge {
   display: inline-block;
-  background: rgba(255, 140, 66, 0.15);
-  color: var(--color-accent-dark);
+  background: rgba(31, 163, 164, 0.15);
+  color: var(--color-primary);
   font-size: 0.9rem;
   font-weight: 600;
   padding: 0.5rem 1.2rem;
@@ -228,7 +239,7 @@ input, select, textarea {
 }
 
 .hero h1 span {
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 .hero-sub {
@@ -253,7 +264,7 @@ input, select, textarea {
 .hero-stat-number {
   font-size: 1.8rem;
   font-weight: 800;
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 .hero-stat-label {
@@ -554,7 +565,7 @@ input, select, textarea {
    Section 5: Process
    ============================================ */
 .process {
-  background: linear-gradient(160deg, var(--color-bg-warm-dark) 0%, #4A3B30 100%);
+  background: linear-gradient(160deg, var(--color-bg-warm-dark) 0%, #1f4748 100%);
   color: var(--color-text-on-dark);
 }
 
@@ -563,7 +574,7 @@ input, select, textarea {
 }
 
 .process .section-subtitle {
-  color: rgba(245, 237, 227, 0.7);
+  color: rgba(232, 244, 245, 0.7);
 }
 
 .process-steps {
@@ -606,7 +617,7 @@ input, select, textarea {
   left: calc(50% + 30px);
   width: calc(100% - 60px);
   height: 2px;
-  background: rgba(255, 140, 66, 0.3);
+  background: rgba(255, 120, 73, 0.3);
   z-index: 0;
 }
 
@@ -623,7 +634,7 @@ input, select, textarea {
 
 .process-step p {
   font-size: 0.85rem;
-  color: rgba(245, 237, 227, 0.7);
+  color: rgba(232, 244, 245, 0.7);
   line-height: 1.5;
 }
 
@@ -650,7 +661,7 @@ input, select, textarea {
 .stat-number {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
-  color: var(--color-accent);
+  color: var(--color-primary);
   line-height: 1;
   margin-bottom: 0.5rem;
 }
@@ -698,7 +709,7 @@ input, select, textarea {
 
 .case-info h3 {
   font-size: 0.9rem;
-  color: var(--color-accent);
+  color: var(--color-primary);
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
@@ -741,7 +752,7 @@ input, select, textarea {
 
 .case-after strong {
   font-size: 1.3rem;
-  color: var(--color-accent);
+  color: var(--color-primary);
   font-weight: 800;
 }
 
@@ -867,7 +878,7 @@ input, select, textarea {
   align-items: center;
   justify-content: center;
   font-size: 3rem;
-  background: rgba(255, 140, 66, 0.1);
+  background: rgba(31, 163, 164, 0.15);
 }
 
 .portfolio-card-body {
@@ -876,7 +887,7 @@ input, select, textarea {
 
 .portfolio-tag {
   display: inline-block;
-  background: rgba(255, 140, 66, 0.2);
+  background: rgba(255, 120, 73, 0.2);
   color: var(--color-accent-light);
   font-size: 0.75rem;
   font-weight: 600;
@@ -893,7 +904,7 @@ input, select, textarea {
 
 .portfolio-card-body p {
   font-size: 0.85rem;
-  color: rgba(245, 237, 227, 0.6);
+  color: rgba(232, 244, 245, 0.6);
 }
 
 .portfolio .slider-btn {
@@ -949,8 +960,8 @@ input, select, textarea {
   top: 1rem;
   right: 1.5rem;
   font-size: 3rem;
-  color: var(--color-accent);
-  opacity: 0.15;
+  color: var(--color-primary);
+  opacity: 0.18;
   font-family: Georgia, serif;
   line-height: 1;
 }
@@ -1032,7 +1043,7 @@ input, select, textarea {
 }
 
 .comparison-header span:last-child {
-  background: var(--color-accent);
+  background: var(--color-primary);
   color: #fff;
 }
 
@@ -1068,8 +1079,8 @@ input, select, textarea {
 }
 
 .comparison-row span:last-child {
-  background: rgba(255, 140, 66, 0.05);
-  color: var(--color-accent-dark);
+  background: rgba(31, 163, 164, 0.06);
+  color: var(--color-primary-dark);
   font-weight: 600;
 }
 
@@ -1092,7 +1103,7 @@ input, select, textarea {
   background: var(--color-bg-white);
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(91, 74, 63, 0.04);
+  box-shadow: 0 2px 8px rgba(31, 163, 164, 0.05);
   transition: box-shadow var(--transition);
 }
 
@@ -1115,13 +1126,13 @@ input, select, textarea {
 }
 
 .faq-question:hover {
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 .faq-icon {
   font-size: 1.2rem;
   transition: transform var(--transition);
-  color: var(--color-accent);
+  color: var(--color-primary);
   flex-shrink: 0;
   margin-left: 1rem;
 }
@@ -1147,7 +1158,7 @@ input, select, textarea {
    Section 12: Contact Form
    ============================================ */
 .contact {
-  background: linear-gradient(160deg, var(--color-bg-warm-dark) 0%, #4A3B30 100%);
+  background: linear-gradient(160deg, var(--color-bg-warm-dark) 0%, #1f4748 100%);
   color: var(--color-text-on-dark);
 }
 
@@ -1156,7 +1167,7 @@ input, select, textarea {
 }
 
 .contact .section-subtitle {
-  color: rgba(245, 237, 227, 0.7);
+  color: rgba(232, 244, 245, 0.7);
 }
 
 .contact-grid {
@@ -1176,7 +1187,7 @@ input, select, textarea {
 
 .contact-info p {
   font-size: 1rem;
-  color: rgba(245, 237, 227, 0.8);
+  color: rgba(232, 244, 245, 0.8);
   line-height: 1.7;
   margin-bottom: 2rem;
 }
@@ -1192,13 +1203,13 @@ input, select, textarea {
   align-items: center;
   gap: 0.8rem;
   font-size: 0.95rem;
-  color: rgba(245, 237, 227, 0.8);
+  color: rgba(232, 244, 245, 0.8);
 }
 
 .contact-detail-icon {
   width: 40px;
   height: 40px;
-  background: rgba(255, 140, 66, 0.15);
+  background: rgba(31, 163, 164, 0.25);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1224,7 +1235,7 @@ input, select, textarea {
   font-size: 0.85rem;
   font-weight: 600;
   margin-bottom: 0.4rem;
-  color: rgba(245, 237, 227, 0.9);
+  color: rgba(232, 244, 245, 0.9);
 }
 
 .form-group label .required {
@@ -1248,7 +1259,7 @@ input, select, textarea {
 }
 
 .form-input::placeholder {
-  color: rgba(245, 237, 227, 0.4);
+  color: rgba(232, 244, 245, 0.4);
 }
 
 .form-select {
@@ -1259,7 +1270,7 @@ input, select, textarea {
   border-radius: var(--radius-sm);
   color: var(--color-text-on-dark);
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23F5EDE3'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23E8F4F5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   cursor: pointer;
@@ -1287,7 +1298,7 @@ input, select, textarea {
   gap: 0.5rem;
   margin: 1.2rem 0;
   font-size: 0.85rem;
-  color: rgba(245, 237, 227, 0.7);
+  color: rgba(232, 244, 245, 0.7);
 }
 
 .form-consent input[type="checkbox"] {
@@ -1327,10 +1338,10 @@ input, select, textarea {
    Footer
    ============================================ */
 .footer {
-  background: #2A221B;
+  background: #0F2829;
   padding: 2rem 1.5rem;
   text-align: center;
-  color: rgba(245, 237, 227, 0.5);
+  color: rgba(232, 244, 245, 0.5);
   font-size: 0.8rem;
 }
 
@@ -1343,12 +1354,12 @@ input, select, textarea {
 }
 
 .footer-links a {
-  color: rgba(245, 237, 227, 0.6);
+  color: rgba(232, 244, 245, 0.6);
   transition: color var(--transition);
 }
 
 .footer-links a:hover {
-  color: var(--color-accent);
+  color: var(--color-primary-light);
 }
 
 /* ============================================
@@ -1381,7 +1392,7 @@ input, select, textarea {
   font-weight: 700;
   padding: 0.9rem 1.5rem;
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 20px rgba(255, 140, 66, 0.4);
+  box-shadow: 0 4px 20px rgba(255, 120, 73, 0.4);
   transition: all var(--transition);
   border: none;
 }
@@ -1389,7 +1400,7 @@ input, select, textarea {
 .floating-cta-btn:hover {
   background: var(--color-accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(255, 140, 66, 0.5);
+  box-shadow: 0 6px 25px rgba(255, 120, 73, 0.5);
 }
 
 .floating-cta-btn .cta-icon {
